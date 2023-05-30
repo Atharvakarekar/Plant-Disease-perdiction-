@@ -95,7 +95,7 @@ model = tf.keras.models.load_model('plant_disease_detection_model.h5')
 num_classes = 37
 
 # Define the class labels
-class_labels = ['Affected', 'Not Affected']
+class_labels = ['Not Affected', 'Affected']
 class_labels += ['class_{}'.format(i) for i in range(num_classes - len(class_labels))]
 assert len(class_labels) == num_classes, "Number of class labels does not match the number of classes"
 
@@ -136,7 +136,7 @@ if uploaded_file is not None:
         st.subheader('Prediction Result')
         st.write(f"Class: {predicted_label}")
         if predicted_class == 0:
-            st.write("Plant Leaf: Affected")
-        else:
             st.write("Plant Leaf: Not Affected")
+        else:
+            st.write("Plant Leaf: Affected")
         st.write(f"Confidence: {confidence:.2%}")
